@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:tower_sequice/data/response/api_response.dart';
-// import 'package:tower_sequice/res/components/round_button.dart';
-// import 'package:tower_sequice/utils/utils.dart';
+import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/view/login/widgets/input_email_widget.dart';
-import 'package:tower_sequice/view/login/widgets/input_password_widget.dart';
-import 'package:tower_sequice/view/login/widgets/login_button_widget.dart';
 import 'package:tower_sequice/view_models/controller/login/login_view_model.dart';
 
 // import '../../data/response/status.dart';
@@ -24,11 +20,8 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text('login'.tr),
-      ),
+      backgroundColor: const Color.fromARGB(255, 9, 181, 219),
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -39,23 +32,63 @@ class _LoginViewState extends State<LoginView> {
               key: _formkey,
               child: Column(
                 children: [
+                  // Image.asset('assets/images/SequisTowerLogo.png'),
+                  Container(
+                    color: Colors.white,
+                    width: 400,
+                    child: Image.asset('assets/images/SequisTowerLogo.png'),
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  ),
                   InputEmailWidget(),
                   const SizedBox(
-                    height: 20,
+                    height: 250,
                   ),
-                  InputPasswordWidget(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have account? ",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Plus Jakarta',
+                            color: Colors.white),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(RouteName.registerView);
+                        },
+                        child: Text(
+                          "Register",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Plus Jakarta',
+                              color: Colors.white),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            LoginButtonWidget(
-              formKey: _formkey,
-            )
           ],
         ),
       ),
+      bottomSheet: TextButton(
+          style: TextButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0)),
+              primary: Colors.cyan,
+              backgroundColor: Colors.white,
+              minimumSize: const Size.fromHeight(70)),
+          onPressed: () async {
+            // Get.toNamed(RouteName.registerView);
+          },
+          child: const Text(
+            "Login",
+            style: TextStyle(fontSize: 16, fontFamily: 'Plus Jakarta'),
+          )),
     );
   }
 }

@@ -23,7 +23,6 @@ class LoginViewModel extends GetxController {
     loading.value = true;
     Map data = {
       'email': emailController.value.text,
-      'password': passwordController.value.text
     };
     _api.loginApi(data).then((value) {
       loading.value = false;
@@ -31,7 +30,6 @@ class LoginViewModel extends GetxController {
       UserModel userModel = UserModel(token: value, isLogin: true);
 
       userPreference.saveUser(userModel).then((value) {
-        // releasing resouces because we are not going to use this
         Get.delete<LoginViewModel>();
         Get.toNamed(RouteName.homeView)!.then((value) {});
         Utils.snackBar('Login', 'Login successfully');
