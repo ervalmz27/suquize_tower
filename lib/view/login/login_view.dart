@@ -22,58 +22,67 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 9, 181, 219),
       resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Form(
-              key: _formkey,
-              child: Column(
-                children: [
-                  // Image.asset('assets/images/SequisTowerLogo.png'),
-                  Container(
-                    color: Colors.white,
-                    width: 400,
-                    child: Image.asset('assets/images/SequisTowerLogo.png'),
-                  ),
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  InputEmailWidget(),
-                  const SizedBox(
-                    height: 250,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(
+            height: 70,
+          ),
+          Container(
+            color: Colors.white,
+            width: 400,
+            child: Image.asset('assets/images/SequisTowerLogo.png'),
+          ),
+          const SizedBox(
+            height: 120,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Don't have account? ",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Plus Jakarta',
-                            color: Colors.white),
+                      InputEmailWidget(),
+                      const SizedBox(
+                        height: 220,
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Get.toNamed(RouteName.registerView);
-                        },
-                        child: Text(
-                          "Register",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Plus Jakarta',
-                              color: Colors.white),
-                        ),
-                      )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Don't have account? ",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Plus Jakarta',
+                    color: Colors.white),
+              ),
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(RouteName.registerView);
+                },
+                child: const Text(
+                  "Register",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Plus Jakarta',
+                      color: Colors.white),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 60,
+          )
+        ],
       ),
       bottomSheet: TextButton(
           style: TextButton.styleFrom(
@@ -83,7 +92,7 @@ class _LoginViewState extends State<LoginView> {
               backgroundColor: Colors.white,
               minimumSize: const Size.fromHeight(70)),
           onPressed: () async {
-            // Get.toNamed(RouteName.registerView);
+            loginVM.loginApi();
           },
           child: const Text(
             "Login",

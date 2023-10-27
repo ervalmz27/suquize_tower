@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tower_sequice/res/getx_loclization/languages.dart';
 import 'package:tower_sequice/res/routes/routes.dart';
 
 void main() {
@@ -14,8 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      translations: Languages(),
+      title: 'Sequise Tower',
       locale: const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),
       theme: ThemeData(

@@ -21,27 +21,29 @@ class RegisterViewModel extends GetxController {
 
   RxBool loading = false.obs;
 
-  void registerApi() {
+  void registerApi() async {
     loading.value = true;
     Map data = {
       'email': emailController.value.text,
-      'nomor': phoneController.value.text,
+      'mobilePhone': phoneController.value.text,
       'token': tokenController.value.text
     };
+
     _api.registerApi(data).then((value) {
       loading.value = false;
 
-      UserModel userModel = UserModel(token: value, isLogin: true);
+      UserModel userModel =
+          UserModel(token: value.data['data']['token'], isLogin: true);
 
       userPreference.saveUser(userModel).then((value) {
         Get.delete<RegisterViewModel>();
-        Get.toNamed(RouteName.loginView)!.then((value) {});
+        Get.toNamed(RouteName.landingView)!.then((value) {});
         Utils.snackBar('Register', 'Register successfully');
       }).onError((error, stackTrace) {});
-    }).onError((error, stackTrace) {
+    }).catchError((error, stackTrace) {
+      // print(error.response.message);
       loading.value = false;
-      print(error);
-      Utils.snackBar('Error', error.toString());
+      Utils.snackBar('Error', error.response.data['message'].toString());
     });
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:tower_sequice/models/login/user_model.dart';
 import 'package:tower_sequice/repository/login_repository/login_repository.dart';
-import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/utils/utils.dart';
+import 'package:tower_sequice/view/otp/otp_view.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
 class LoginViewModel extends GetxController {
@@ -26,14 +25,10 @@ class LoginViewModel extends GetxController {
     };
     _api.loginApi(data).then((value) {
       loading.value = false;
-
-      UserModel userModel = UserModel(token: value, isLogin: true);
-
-      userPreference.saveUser(userModel).then((value) {
-        Get.delete<LoginViewModel>();
-        Get.toNamed(RouteName.homeView)!.then((value) {});
-        Utils.snackBar('Login', 'Login successfully');
-      }).onError((error, stackTrace) {});
+      Get.delete<LoginViewModel>();
+      Get.to(() => const OtpView(), arguments: data)!.then((value) {});
+      Utils.snackBar(
+          'Success', 'try checking the message we sent to get the OTP!');
     }).onError((error, stackTrace) {
       loading.value = false;
       print(error);

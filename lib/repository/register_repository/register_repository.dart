@@ -5,8 +5,8 @@ class RegisterRepository {
   final _apiService = NetworkApiServices();
 
   Future<dynamic> registerApi(var data) async {
-    print(data);
     dynamic response = await _apiService.postApi(data, AppUrl.registerApi);
+
     return response;
   }
 }

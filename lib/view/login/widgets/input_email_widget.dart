@@ -12,6 +12,8 @@ class InputEmailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // textInputAction: TextInputAction.go,
+      textInputAction: TextInputAction.go,
       controller: loginVM.emailController.value,
       focusNode: loginVM.emailFocusNode.value,
       validator: (value) {
@@ -19,24 +21,29 @@ class InputEmailWidget extends StatelessWidget {
           Utils.snackBar('Email', 'Enter email');
         }
       },
+      style: const TextStyle(color: Colors.white),
       onFieldSubmitted: (value) {
         Utils.fieldFocusChange(context, loginVM.emailFocusNode.value,
             loginVM.passwordFocusNode.value);
+
+        loginVM.loginApi();
       },
-      decoration: InputDecoration(
+
+      decoration: const InputDecoration(
         enabledBorder: UnderlineInputBorder(
-          borderSide: const BorderSide(
-              width: 1, color: Color.fromARGB(255, 255, 255, 255)),
+          borderSide:
+              BorderSide(width: 1, color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        hintText: 'Email or Mobile Phone'.tr,
-        prefixIcon: const Icon(
+        labelStyle: TextStyle(color: Colors.white),
+        labelText: 'Email or Mobile Phone',
+        prefixIcon: Icon(
           Icons.email,
           color: Color.fromARGB(255, 194, 194, 194),
           size: 24.0,
           semanticLabel: 'Text to announce in accessibility modes',
         ),
         focusedBorder: UnderlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white, width: 1.0)),
+            borderSide: BorderSide(color: Colors.white, width: 1.0)),
       ),
     );
   }
