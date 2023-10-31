@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tower_sequice/data/response/status.dart';
-import 'package:tower_sequice/res/components/general_exception.dart';
-import 'package:tower_sequice/res/components/internet_exceptions_widget.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/view/access/access_view.dart';
 import 'package:tower_sequice/view_models/controller/home/home_view_models.dart';

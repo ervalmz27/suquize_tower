@@ -29,9 +29,10 @@ class LoginViewModel extends GetxController {
     _api.loginApi(data).then((value) {
       loading.value = false;
       Get.delete<LoginViewModel>();
-      Get.off(LoginView());
-      Get.off(RegisterView());
-      Get.off(LandingPage());
+      // Get.off(LoginView());
+      // Get.off(RegisterView());
+      // Get.off(LandingPage());
+
       Get.to(() => const OtpView(), arguments: data)!.then((value) {});
       Utils.snackBar(
           'Success', 'try checking the message we sent to get the OTP!');
