@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Map<String, dynamic>> items = [
     {"title": "Profile ", "url": "assets/images/menuprofile.svg"},
-    {"title": "Access", "url": "assets/images/menuaccess.svg"},
+    {"title": "Access", "url": "assets/images/menuQR.svg"},
     {"title": "Bulletin", "url": "assets/images/menubulletin.svg"},
     {"title": "Facility Management", "url": "assets/images/menusdx.svg"},
     {"title": "Wallness", "url": "assets/images/menuwellness.svg"},

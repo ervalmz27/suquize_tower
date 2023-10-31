@@ -51,7 +51,7 @@ class _RegisterViewState extends State<RegisterView> {
                       InputPhoneWidget(),
                       InputAccessWidget(),
                       const SizedBox(
-                        height: 110,
+                        height: 90,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +61,7 @@ class _RegisterViewState extends State<RegisterView> {
                               Get.toNamed(RouteName.loginView);
                               Get.delete<RegisterViewModel>();
                             },
-                            child: Text(
+                            child: const Text(
                               "Cancel",
                               style: TextStyle(
                                   fontSize: 16,

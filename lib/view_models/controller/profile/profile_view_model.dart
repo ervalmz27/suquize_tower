@@ -21,20 +21,18 @@ class ProfileViewModel extends GetxController {
 
   RxBool loading = false.obs;
 
-  void updateProfile() {
+  void updateProfile(data) {
     loading.value = true;
-    Map data = {
-      'mobilePhone': emailController.value.text,
-    };
+    data['mobilePhone'] = mobilePhoneController.value.text;
+
     _api.profileApi(data).then((value) {
       loading.value = false;
 
-      Utils.snackBar(
-          'Success', 'try checking the message we sent to get the OTP!');
-    }).onError((error, stackTrace) {
+      Utils.snackBar('Success', 'Update your profile');
+    }).catchError((error, stackTrace) {
       loading.value = false;
       print(error);
-      Utils.snackBar('Error', error.toString());
+      Utils.snackBar('Error', error.response.data!['message'].toString());
     });
   }
 
@@ -45,7 +43,6 @@ class ProfileViewModel extends GetxController {
       setRxRequestStatus(Status.COMPLETED);
       mobilePhoneController.value.text = "62" + value.data!['mobilePhone'];
       ;
-      print(value.data!['email']);
     }).onError((error, stackTrace) {
       loading.value = false;
       print('erroor');

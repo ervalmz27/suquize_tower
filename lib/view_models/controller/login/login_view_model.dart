@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tower_sequice/repository/login_repository/login_repository.dart';
 import 'package:tower_sequice/utils/utils.dart';
+import 'package:tower_sequice/view/landing/landing_view.dart';
 import 'package:tower_sequice/view/login/login_view.dart';
 import 'package:tower_sequice/view/otp/otp_view.dart';
 import 'package:tower_sequice/view/register/register_view.dart';
@@ -29,15 +30,14 @@ class LoginViewModel extends GetxController {
       loading.value = false;
       Get.delete<LoginViewModel>();
       Get.off(LoginView());
-
       Get.off(RegisterView());
+      Get.off(LandingPage());
       Get.to(() => const OtpView(), arguments: data)!.then((value) {});
       Utils.snackBar(
           'Success', 'try checking the message we sent to get the OTP!');
-    }).onError((error, stackTrace) {
+    }).catchError((error, stackTrace) {
       loading.value = false;
-      print(error);
-      Utils.snackBar('Error', error.toString());
+      Utils.snackBar('Error', error.response.data['message']);
     });
   }
 }

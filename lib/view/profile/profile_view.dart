@@ -217,7 +217,13 @@ class _ProfileViewState extends State<ProfileView> {
                   primary: Colors.white,
                   backgroundColor: Colors.cyan,
                   minimumSize: const Size.fromHeight(70)),
-              onPressed: () async {},
+              onPressed: () async {
+                profileController
+                    .updateProfile(homeController.userList.value.data);
+                setState(() {
+                  _isUpdate = !_isUpdate;
+                });
+              },
               child: const Text(
                 "Save",
                 style: TextStyle(fontSize: 16, fontFamily: 'Plus Jakarta'),
