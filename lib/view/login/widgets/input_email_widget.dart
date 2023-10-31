@@ -17,15 +17,15 @@ class InputEmailWidget extends StatelessWidget {
       controller: loginVM.emailController.value,
       focusNode: loginVM.emailFocusNode.value,
       validator: (value) {
-        if (value!.isEmpty) {
-          Utils.snackBar('Email', 'Enter email');
+        if (value == null || value.isEmpty) {
+          return 'Please enter your email | number phone';
         }
+        return null;
       },
       style: const TextStyle(color: Colors.white),
       onFieldSubmitted: (value) {
         Utils.fieldFocusChange(context, loginVM.emailFocusNode.value,
             loginVM.passwordFocusNode.value);
-
         loginVM.loginApi();
       },
 

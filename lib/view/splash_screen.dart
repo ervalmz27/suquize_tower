@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
 // import 'package:tower_sequice/view_models/services/splash_services.dart';
@@ -18,23 +15,12 @@ class IntroScreenDefault extends StatefulWidget {
 class IntroScreenDefaultState extends State<IntroScreenDefault> {
   List<ContentConfig> listContentConfig = [];
   final controller = PageController();
+
   bool isLastPage = false;
   @override
   void dispose() {
     controller.dispose();
-    isLogin();
     super.dispose();
-  }
-
-  void isLogin() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    bool? isLogin = sp.getBool('isLogin') ?? false;
-
-    if (isLogin) {
-      Timer(const Duration(seconds: 5), () {
-        Get.toNamed(RouteName.landingView);
-      });
-    }
   }
 
   @override

@@ -47,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
                     children: [
                       InputEmailWidget(),
                       const SizedBox(
-                        height: 220,
+                        height: 200,
                       ),
                     ],
                   ),
@@ -92,7 +92,9 @@ class _LoginViewState extends State<LoginView> {
               backgroundColor: Colors.white,
               minimumSize: const Size.fromHeight(70)),
           onPressed: () async {
-            loginVM.loginApi();
+            if (_formkey.currentState!.validate()) {
+              loginVM.loginApi();
+            }
           },
           child: const Text(
             "Login",

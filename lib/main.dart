@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tower_sequice/res/routes/routes.dart';
+import 'package:tower_sequice/res/routes/routes_name.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: RouteName.fisrhScreen,
       getPages: AppRoutes.appRoutes(),
     );
   }

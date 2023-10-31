@@ -13,10 +13,12 @@ class InputPhoneWidget extends StatelessWidget {
       controller: registerVM.phoneController.value,
       focusNode: registerVM.phoneFocusNode.value,
       validator: (value) {
-        if (value!.isEmpty) {
-          Utils.snackBar('phone', 'Enter Phone');
+        if (value == null || value.isEmpty) {
+          return 'Please enter number  phone';
         }
+        return null;
       },
+      style: TextStyle(color: Colors.white),
       onFieldSubmitted: (value) {
         Utils.fieldFocusChange(
           context,

@@ -11,12 +11,14 @@ class InputEmailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(color: Colors.white),
       controller: registerVM.emailController.value,
       focusNode: registerVM.emailFocusNode.value,
       validator: (value) {
-        if (value!.isEmpty) {
-          Utils.snackBar('Email', 'Enter email');
+        if (value == null || value.isEmpty) {
+          return 'Please enter email';
         }
+        return null;
       },
       onFieldSubmitted: (value) {
         Utils.fieldFocusChange(
@@ -25,14 +27,15 @@ class InputEmailWidget extends StatelessWidget {
           registerVM.phoneFocusNode.value,
         );
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
+          fillColor: Colors.white,
           enabledBorder: UnderlineInputBorder(
-            borderSide: const BorderSide(
-                width: 1, color: Color.fromARGB(255, 255, 255, 255)),
+            borderSide:
+                BorderSide(width: 1, color: Color.fromARGB(255, 255, 255, 255)),
           ),
           // hintText: 'Email'.tr,
           labelText: 'Email',
-          prefixIcon: const Icon(
+          prefixIcon: Icon(
             Icons.email,
             color: Color.fromARGB(255, 194, 194, 194),
             size: 24.0,
@@ -41,7 +44,7 @@ class InputEmailWidget extends StatelessWidget {
           labelStyle: TextStyle(color: Colors.white),
           focusColor: Colors.white,
           focusedBorder: UnderlineInputBorder(
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
             color: Colors.white,
             width: 1.0,
           ))),

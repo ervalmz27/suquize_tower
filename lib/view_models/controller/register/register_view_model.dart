@@ -4,6 +4,8 @@ import 'package:tower_sequice/models/login/user_model.dart';
 import 'package:tower_sequice/repository/register_repository/register_repository.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/utils/utils.dart';
+import 'package:tower_sequice/view/landing/landing_view.dart';
+import 'package:tower_sequice/view/register/register_view.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
 class RegisterViewModel extends GetxController {
@@ -37,11 +39,10 @@ class RegisterViewModel extends GetxController {
 
       userPreference.saveUser(userModel).then((value) {
         Get.delete<RegisterViewModel>();
-        Get.toNamed(RouteName.landingView)!.then((value) {});
+        Get.off(RegisterView());
         Utils.snackBar('Register', 'Register successfully');
       }).onError((error, stackTrace) {});
     }).catchError((error, stackTrace) {
-      // print(error.response.message);
       loading.value = false;
       Utils.snackBar('Error', error.response.data['message'].toString());
     });

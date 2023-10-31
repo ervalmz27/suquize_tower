@@ -23,7 +23,6 @@ class NetworkApiServices extends BaseApiServices {
       final prefs = await SharedPreferences.getInstance();
 
       String? token = prefs.getString('token');
-
       dio.options.headers["Authorization"] = "Bearer $token";
       final response = await dio.get(url);
       responseJson = response;

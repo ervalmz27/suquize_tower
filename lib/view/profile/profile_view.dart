@@ -222,7 +222,20 @@ class _ProfileViewState extends State<ProfileView> {
                 "Save",
                 style: TextStyle(fontSize: 16, fontFamily: 'Plus Jakarta'),
               ))
-          : null,
+          : TextButton(
+              style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0)),
+                  primary: Colors.white,
+                  backgroundColor: Colors.cyan,
+                  minimumSize: const Size.fromHeight(70)),
+              onPressed: () async {
+                profileController.signOut();
+              },
+              child: const Text(
+                "Logout",
+                style: TextStyle(fontSize: 16, fontFamily: 'Plus Jakarta'),
+              )),
     );
   }
 }

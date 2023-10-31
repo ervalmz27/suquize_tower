@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tower_sequice/view/access/access_view.dart';
 import 'package:tower_sequice/view/home/home_view.dart';
 import 'package:tower_sequice/view_models/controller/landing/landing_view_models.dart';
 
@@ -51,28 +50,6 @@ class LandingPage extends StatelessWidget {
                 label: 'Inbox',
                 backgroundColor: Colors.white,
               ),
-              // BottomNavigationBarItem(
-              //   icon: Container(
-              //     margin: EdgeInsets.only(bottom: 7),
-              //     child: Icon(
-              //       Icons.location_history,
-              //       size: 20.0,
-              //     ),
-              //   ),
-              //   label: 'Places',
-              //   backgroundColor: Colors.white,
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: Container(
-              //     margin: EdgeInsets.only(bottom: 7),
-              //     child: Icon(
-              //       Icons.settings,
-              //       size: 20.0,
-              //     ),
-              //   ),
-              //   label: 'Settings',
-              //   backgroundColor: Colors.white,
-              // ),
             ],
           ),
         )));
@@ -87,16 +64,12 @@ class LandingPage extends StatelessWidget {
         child: Scaffold(
       bottomNavigationBar:
           buildBottomNavigationMenu(context, landingPageController),
-      body: Obx(() => IndexedStack(
-            index: landingPageController.tabIndex.value,
-            children: [
-              HomeView(),
-              HomeView(),
-              AccessView(),
-              // PlacesPage(),
-              // SettingsPage(),
-            ],
-          )),
+      body: IndexedStack(
+        index: landingPageController.tabIndex.value,
+        children: [
+          HomeView(),
+        ],
+      ),
     ));
   }
 }

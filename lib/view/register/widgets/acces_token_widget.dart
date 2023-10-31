@@ -11,12 +11,14 @@ class InputAccessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(color: Colors.white),
       controller: registerVM.tokenController.value,
       focusNode: registerVM.tokenFocusNode.value,
       validator: (value) {
-        if (value!.isEmpty) {
-          Utils.snackBar('token', 'Enter access token');
+        if (value == null || value.isEmpty) {
+          return 'Please enter your access token';
         }
+        return null;
       },
       onFieldSubmitted: (value) {
         Utils.fieldFocusChange(

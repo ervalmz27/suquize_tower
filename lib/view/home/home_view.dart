@@ -21,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+
     homeController.userListApi();
   }
 
@@ -44,31 +45,15 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Obx(() {
-          switch (homeController.rxRequestStatus.value) {
-            case Status.LOADING:
-              return const Center(child: CircularProgressIndicator());
-            case Status.ERROR:
-              if (homeController.error.value == 'No internet') {
-                return InterNetExceptionWidget(
-                  onPress: () {
-                    homeController.refreshApi();
-                  },
-                );
-              } else {
-                return GeneralExceptionWidget(onPress: () {
-                  homeController.refreshApi();
-                });
-              }
-            case Status.COMPLETED:
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    'assets/images/SequisTowerLogo.png',
-                    height: 26,
-                  ),
-                  Row(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(
+              'assets/images/SequisTowerLogo.png',
+              height: 26,
+            ),
+            homeController.userList.value.data != null
+                ? Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const Text(
@@ -90,10 +75,9 @@ class _HomeViewState extends State<HomeView> {
                       )
                     ],
                   )
-                ],
-              );
-          }
-        }),
+                : Text(""),
+          ],
+        ),
       ),
       body: Flex(direction: Axis.vertical, children: [
         Container(

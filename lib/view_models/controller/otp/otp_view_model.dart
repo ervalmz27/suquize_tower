@@ -4,6 +4,7 @@ import 'package:tower_sequice/models/login/index.dart';
 import 'package:tower_sequice/repository/otp_repository/otp_repository.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/utils/utils.dart';
+import 'package:tower_sequice/view/otp/otp_view.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
 class OtpViewModel extends GetxController {
@@ -25,6 +26,7 @@ class OtpViewModel extends GetxController {
           UserModel(token: value.data['data']['token'], isLogin: true);
       userPreference.saveUser(userModel).then((value) {
         Get.delete<OtpViewModel>();
+        Get.off(OtpView());
         Get.toNamed(RouteName.landingView)!.then((value) {});
         Utils.snackBar('Login', 'Login successfully');
       }).onError((error, stackTrace) {});

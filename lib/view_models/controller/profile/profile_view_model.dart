@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tower_sequice/data/response/status.dart';
 import 'package:tower_sequice/repository/profile_repository/profile.repository.dart';
+import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/utils/utils.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
@@ -52,6 +53,12 @@ class ProfileViewModel extends GetxController {
       setRxRequestStatus(Status.ERROR);
 
       Utils.snackBar('Error', error.toString());
+    });
+  }
+
+  void signOut() {
+    userPreference.removeUser().then((value) {
+      Get.toNamed(RouteName.loginView);
     });
   }
 }

@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/view/access/access_view.dart';
+import 'package:tower_sequice/view/first_screen.dart';
 import 'package:tower_sequice/view/profile/profile_view.dart';
-import 'package:tower_sequice/view/home/home_view.dart';
+
 import 'package:tower_sequice/view/landing/landing_view.dart';
 import 'package:tower_sequice/view/login/login_view.dart';
 import 'package:tower_sequice/view/otp/otp_view.dart';
@@ -11,6 +12,12 @@ import 'package:tower_sequice/view/splash_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [
+        GetPage(
+          name: RouteName.fisrhScreen,
+          page: () => const FirshScreen(),
+          transitionDuration: Duration(milliseconds: 250),
+          transition: Transition.leftToRightWithFade,
+        ),
         GetPage(
           name: RouteName.splashScreen,
           page: () => const IntroScreenDefault(),
@@ -38,12 +45,6 @@ class AppRoutes {
         GetPage(
           name: RouteName.landingView,
           page: () => LandingPage(),
-          transitionDuration: Duration(milliseconds: 250),
-          transition: Transition.leftToRightWithFade,
-        ),
-        GetPage(
-          name: RouteName.homeView,
-          page: () => const HomeView(),
           transitionDuration: Duration(milliseconds: 250),
           transition: Transition.leftToRightWithFade,
         ),
