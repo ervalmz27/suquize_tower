@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tower_sequice/models/login/user_model.dart';
 import 'package:tower_sequice/repository/register_repository/register_repository.dart';
-import 'package:tower_sequice/res/routes/routes_name.dart';
 import 'package:tower_sequice/utils/utils.dart';
-import 'package:tower_sequice/view/landing/landing_view.dart';
 import 'package:tower_sequice/view/register/register_view.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 

@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:tower_sequice/view_models/controller/home/home_view_models.dart';
 import 'package:tower_sequice/view_models/controller/profile/profile_view_model.dart';
 
-import '../../../utils/utils.dart';
-
 class InputMobileWidget extends StatelessWidget {
   final profleData = Get.put(HomeController());
   final profle = Get.put(ProfileViewModel());

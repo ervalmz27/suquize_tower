@@ -1,12 +1,9 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:tower_sequice/res/routes/routes_name.dart';
-import 'package:tower_sequice/view/first_screen.dart';
 import 'package:tower_sequice/view/landing/landing_view.dart';
-import 'package:tower_sequice/view/login/login_view.dart';
-import 'package:tower_sequice/view/otp/otp_view.dart';
-import 'package:tower_sequice/view/register/register_view.dart';
 import 'package:tower_sequice/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
 class SplashServices {
@@ -14,13 +11,16 @@ class SplashServices {
 
   void isLogin() {
     userPreference.getUser().then((value) {
-      if (value.isLogin == false || value.isLogin.toString() == 'null') {
+      String? token = value.token;
+      DateTime expirationDate = JwtDecoder.getExpirationDate(token.toString());
+      DateTime now = new DateTime.now();
+
+      if (value.isLogin == false ||
+          value.isLogin.toString() == 'null' ||
+          now == expirationDate) {
         Timer(const Duration(seconds: 3),
             () => Get.toNamed(RouteName.splashScreen));
       } else {
-        // Get.off(LoginView());
-        // Get.off(OtpView());
-        // Get.off(RegisterView());
         Get.off(LandingPage());
         Timer(const Duration(seconds: 3),
             () => Get.toNamed(RouteName.landingView));

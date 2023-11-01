@@ -14,9 +14,8 @@ class LandingPage extends StatelessWidget {
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        data: MediaQuery.of(context).copyWith(textScaleFactor: 2.0),
         child: SizedBox(
-          height: 54,
           child: BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,

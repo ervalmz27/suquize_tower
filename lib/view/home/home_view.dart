@@ -117,9 +117,9 @@ class _HomeViewState extends State<HomeView> {
                           }
                         },
                         child: Container(
-                            height: 80,
-                            width: 80,
-                            padding: const EdgeInsets.all(10),
+                            height: 90,
+                            width: 90,
+                            padding: const EdgeInsets.all(4.0),
                             child: SvgPicture.asset(url)),
                       ),
                       Text(
