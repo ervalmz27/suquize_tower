@@ -22,67 +22,70 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 9, 181, 219),
       resizeToAvoidBottomInset: false,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(
-            height: 70,
-          ),
-          Container(
-            color: Colors.white,
-            width: 400,
-            child: Image.asset('assets/images/SequisTowerLogo.png'),
-          ),
-          const SizedBox(
-            height: 120,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InputEmailWidget(),
-                      const SizedBox(
-                        height: 200,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 70,
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Don't have account? ",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'Plus Jakarta',
-                    color: Colors.white),
+            Container(
+              color: Colors.white,
+              width: 400,
+              child: Image.asset('assets/images/SequisTowerLogo.png'),
+            ),
+            const SizedBox(
+              height: 120,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Form(
+                    key: _formkey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InputEmailWidget(),
+                        const SizedBox(
+                          height: 200,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () {
-                  Get.toNamed(RouteName.registerView);
-                },
-                child: const Text(
-                  "Register",
+            ),
+            const SizedBox(
+              height: 170,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Don't have account? ",
                   style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Plus Jakarta',
                       color: Colors.white),
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 60,
-          )
-        ],
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed(RouteName.registerView);
+                  },
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Plus Jakarta',
+                        color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
       bottomSheet: TextButton(
           style: TextButton.styleFrom(

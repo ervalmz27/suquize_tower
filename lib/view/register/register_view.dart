@@ -25,60 +25,68 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 9, 181, 219),
       resizeToAvoidBottomInset: false,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            color: Colors.white,
-            width: 400,
-            child: Image.asset('assets/images/SequisTowerLogo.png'),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Form(
-                  key: _formkey,
-                  child: Column(
-                    children: [
-                      // Image.asset('assets/images/SequisTowerLogo.png'),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      InputEmailWidget(),
-                      InputPhoneWidget(),
-                      InputAccessWidget(),
-                      const SizedBox(
-                        height: 90,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Get.toNamed(RouteName.loginView);
-                              Get.delete<RegisterViewModel>();
-                            },
-                            child: const Text(
-                              "Cancel",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'Plus Jakarta',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 70,
             ),
-          ),
-        ],
+            Container(
+              color: Colors.white,
+              width: 400,
+              child: Image.asset('assets/images/SequisTowerLogo.png'),
+            ),
+            const SizedBox(
+              height: 120,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Form(
+                    key: _formkey,
+                    child: Column(
+                      children: [
+                        // Image.asset('assets/images/SequisTowerLogo.png'),
+
+                        InputEmailWidget(),
+                        InputPhoneWidget(),
+                        InputAccessWidget(),
+                        const SizedBox(
+                          height: 100,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 170,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed(RouteName.loginView);
+                    Get.delete<RegisterViewModel>();
+                  },
+                  child: const Text(
+                    "Cancel",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Plus Jakarta',
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
       bottomSheet: TextButton(
           style: TextButton.styleFrom(

@@ -50,7 +50,8 @@ dependencies:
   qr_flutter: ^4.1.0
   flutter_windowmanager: ^0.2.0
   jwt_decoder: ^2.0.1
-  
+  upgrader: ^8.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

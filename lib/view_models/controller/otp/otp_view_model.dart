@@ -26,13 +26,13 @@ class OtpViewModel extends GetxController {
           UserModel(token: value.data['data']['token'], isLogin: true);
       userPreference.saveUser(userModel).then((value) {
         Get.delete<OtpViewModel>();
-        Get.offAll(LandingPage());
-        Get.toNamed(RouteName.landingView)!.then((value) {});
+        Get.offAllNamed(RouteName.landingView);
+        // Get.offAll(LandingPage());
         Utils.snackBar('Login', 'Login successfully');
       }).onError((error, stackTrace) {});
-    }).onError((error, stackTrace) {
+    }).catchError((error, stackTrace) {
       loading.value = false;
-      Utils.snackBar('Error', error.toString());
+      Utils.snackBar('Error', error.response.data['message']);
     });
   }
 
@@ -41,9 +41,9 @@ class OtpViewModel extends GetxController {
 
     _api.resendOtpApi(data).then((value) {
       loading.value = false;
-    }).onError((error, stackTrace) {
+    }).catchError((error, stackTrace) {
       loading.value = false;
-      Utils.snackBar('Error', error.toString());
+      Utils.snackBar('Error', error.response.data['message']);
     });
   }
 }

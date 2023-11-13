@@ -35,46 +35,8 @@ class _AccessViewState extends State<AccessView> {
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
+    print(arguments['cardNumber']);
     return Scaffold(
-      // bottomNavigationBar: BottomNavigationBar(
-      //   showUnselectedLabels: true,
-      //   showSelectedLabels: true,
-      //   onTap: (value) {
-      //     if (value == 0) {
-      //       Get.back();
-      //     }
-      //   },
-      //   currentIndex: currentPageIndex,
-      //   backgroundColor: Colors.white,
-      //   unselectedItemColor: Colors.cyan.withOpacity(0.5),
-      //   selectedItemColor: Colors.cyan,
-      //   unselectedLabelStyle: unselectedLabelStyle,
-      //   selectedLabelStyle: selectedLabelStyle,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         margin: EdgeInsets.only(bottom: 7),
-      //         child: const Icon(
-      //           Icons.home,
-      //           size: 20.0,
-      //         ),
-      //       ),
-      //       label: 'Home',
-      //       backgroundColor: Colors.white,
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         margin: EdgeInsets.only(bottom: 7),
-      //         child: const Icon(
-      //           Icons.inbox_outlined,
-      //           size: 20.0,
-      //         ),
-      //       ),
-      //       label: 'Inbox',
-      //       backgroundColor: Colors.white,
-      //     ),
-      //   ],
-      // ),
       body: DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -203,15 +165,27 @@ class _AccessViewState extends State<AccessView> {
                         )
                       ],
                     )
-                  : Center(
-                      child: Text('Data not Found!'),
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text("You don't have a card number yet!")
+                      ],
                     ),
               arguments['cardNumber'] != null
                   ? Center(
                       child: QrImageView(data: arguments['cardNumber']),
                     )
-                  : Center(
-                      child: Text('Data not Found!'),
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text("You don't have a card number yet!")
+                      ],
                     ),
             ],
           ),

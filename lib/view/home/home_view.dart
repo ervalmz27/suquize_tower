@@ -38,6 +38,9 @@ class _HomeViewState extends State<HomeView> {
   ];
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 2), () {
+      homeController.userListApi();
+    });
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -49,30 +52,28 @@ class _HomeViewState extends State<HomeView> {
               'assets/images/SequisTowerLogo.png',
               height: 26,
             ),
-            homeController.userList.value.data != null
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Hi,',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      InkWell(
-                        child: Text(
-                          homeController.userList.value.data!['firstName'] +
-                              homeController.userList.value.data!['lastName'],
-                          style: TextStyle(
-                            color: Colors.cyan,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                        onTap: () {
-                          Get.toNamed(RouteName.profileView);
-                        },
-                      )
-                    ],
-                  )
-                : Text(""),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text(
+                  'Hi,',
+                  style: TextStyle(color: Colors.black),
+                ),
+                InkWell(
+                  child: Text(
+                    homeController.firsname.value +
+                        homeController.lastname.value,
+                    style: TextStyle(
+                      color: Colors.cyan,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  onTap: () {
+                    Get.toNamed(RouteName.profileView);
+                  },
+                )
+              ],
+            )
           ],
         ),
       ),

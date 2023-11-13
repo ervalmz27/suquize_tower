@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tower_sequice/view_models/controller/register/register_view_model.dart';
-import '../../../utils/utils.dart';
 
 class InputAccessWidget extends StatelessWidget {
   InputAccessWidget({Key? key}) : super(key: key);
@@ -21,11 +20,7 @@ class InputAccessWidget extends StatelessWidget {
         return null;
       },
       onFieldSubmitted: (value) {
-        Utils.fieldFocusChange(
-          context,
-          registerVM.tokenFocusNode.value,
-          registerVM.phoneFocusNode.value,
-        );
+        registerVM.registerApi();
       },
       decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(

@@ -9,6 +9,8 @@ class HomeController extends GetxController {
   final rxRequestStatus = Status.LOADING.obs;
   final userList = UserListModel().obs;
   RxString error = ''.obs;
+  RxString firsname = ''.obs;
+  RxString lastname = ''.obs;
 
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
   void setUserList(UserListModel _value) => userList.value = _value;
@@ -20,6 +22,8 @@ class HomeController extends GetxController {
     _api.userListApi().then((value) {
       setRxRequestStatus(Status.COMPLETED);
       setUserList(value);
+      firsname.value = value.data!['firstName'];
+      lastname.value = value.data!['lastName'];
     }).onError((error, stackTrace) {
       print(error);
       setError(error.toString());
